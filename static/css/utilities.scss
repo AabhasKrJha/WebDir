@@ -1,0 +1,14 @@
+.flex{
+    display: flex;
+}
+
+.flex-row-rev{
+    flex-direction: row-reverse;
+}
+
+button{
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    outline: none;
+}

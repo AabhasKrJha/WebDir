@@ -1,0 +1,16 @@
+@import url("utilities.css");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+nav{
+    div{
+        height: 100%;
+        padding: 10px;
+    }
+    background-color: black;
+}

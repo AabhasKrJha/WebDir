@@ -2,11 +2,20 @@
 
 from flask import Flask, render_template
 
-app = Flask(__name__)
+def create_app(testing = False):
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+    app = Flask(__name__)
+    app.config["SECRET_KEY"] = "Your secret key here"
+
+    if testing:
+        app.debug = True
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+    
+    return app
 
 if __name__  == "__main__":
-    app.run(debug = True, port = 5000)
+    app = create_app(testing = True)
+    app.run(port = 5000)

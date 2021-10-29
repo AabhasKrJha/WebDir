@@ -1,8 +1,16 @@
-<main class="global-center">
+<main >
 
-    <img class="responsive-img" src="{{ url_for('static', filename = 'media/img/flask-logo.png') }}" alt="Flask Logo">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <img src="{{ url_for('static', filename = 'media/img/flask-logo.png') }}" class="img-fluid" alt="flask logo"> <br>
+        <center>
+            <h4>Hello world</h4>
+            <p>This is a reusable Flask template made using 
+                <a href="https://flask.palletsprojects.com/en/latest/"><b>flask</b></a> and 
+                <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/"><b>bootstrap</b></a> .
+            </p>
+        </center>
+    </div>
 
-    <span class="x-center">Hello World!</span> <br>
-    <a class="x-center" href="/routes">Routes</a>
+    
 
 </main>

@@ -7,3 +7,9 @@
 button{
   outline: none;
 }
+
+.div-center{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}

@@ -4,7 +4,7 @@
 
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="/">Flask App</a>
+            <a class="navbar-link navbar-brand" href="/">Flask App</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -15,27 +15,36 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="navbar-link nav-link active" aria-current="page" href="/">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/about">About</a>
+                        <a class="navbar-link nav-link active" aria-current="page" href="/about">About</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="navbar-link nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Components
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                            <li><a class="dropdown-item" href="#"><b>Bootstrap</b></a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Forms</a></li>
+                                <li><a class="dropdown-item" href="#">FAQ</a></li>
+                                <li><a class="dropdown-item" href="#">Tables</a></li>
+                                <li><a class="dropdown-item" href="#">Search Bar</a></li>
+                                <li><a class="dropdown-item" href="#">Navbar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li><a class="dropdown-item" href="#"><b>Flask / Python</b></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">app factory</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="navbar-link nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Learn
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -50,7 +59,7 @@
 
                 </ul>
 
-                <button type="button" class="btn btn-dark">Switch Theme</button>
+                <button id="theme-btn" type="button" class="btn btn-dark" onclick="switchTheme();">Switch Theme</button>
 
             </div>
 

@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3
-from flask import g
+from flask import g, current_app
 
 
-def get_db(app):
-    
-    with app.app_context():
-        if 'basic_auth_sqlite' not in g:
-            g.db = sqlite3.connect(
-                app.config['BASIC_AUTH_SQLITE_DATABSE_URI'],
-                detect_types=sqlite3.PARSE_DECLTYPES
-            )
-            g.db.row_factory = sqlite3.Row
+def get_db():
+    if 'basic_auth_sqlite' not in g:
+        g.db = sqlite3.connect(
+             current_app.config['BASIC_AUTH_SQLITE_DATABSE_URI'],
+            detect_types=sqlite3.PARSE_DECLTYPES
+        )
+        g.db.row_factory = sqlite3.Row
 
-        return g.db
+    return g.db
 
 
 def close_db(e=None):
@@ -24,11 +22,11 @@ def close_db(e=None):
         db.close()
 
 
-def init_db(app):
+def init_db():
     
-    db = get_db(app)
+    db = get_db()
 
-    with app.open_resource('basic_auth_sqlite.sql') as f:
+    with current_app.open_resource('basic_auth_sqlite.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
 

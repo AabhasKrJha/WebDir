@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template
+from flask import current_app
 import os
 
 def create_app(testing = False):
 
     app = Flask(__name__)
+
+    app_ctx = app.app_context()
+    app_ctx.push()
 
     app.config["SECRET_KEY"] = "Your-secret-key-here"
 
@@ -37,7 +41,7 @@ def create_app(testing = False):
 
     from blueprints.auth.basic_auth import sqlite_db
     sqlite_db.init_app(app)
-    sqlite_db.init_db(app)
+    sqlite_db.init_db()
     
     return app
 

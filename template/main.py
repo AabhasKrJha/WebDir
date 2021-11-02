@@ -17,9 +17,12 @@ def create_app(testing = False):
     @app.route("/about")
     def about():
         return render_template("about.html")
+
+    from blueprints import componentsBP
+    app.register_blueprint(componentsBP.bp)
     
     return app
 
 if __name__  == "__main__":
-    app = create_app(testing = True)
-    app.run(port = 5000)
+    FLASK_APP = create_app(testing = True)
+    FLASK_APP.run(port = 5000)

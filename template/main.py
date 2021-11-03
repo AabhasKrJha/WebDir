@@ -6,8 +6,11 @@ import os
 
 def create_app(testing = False):
 
+    """app factory"""
+
     app = Flask(__name__)
 
+    # app context manager
     app_ctx = app.app_context()
     app_ctx.push()
 
@@ -19,24 +22,29 @@ def create_app(testing = False):
     BASIC_AUTH_SQLITE_DATABSE_URI = os.path.join(CWD, 'blueprints/auth/basic_auth/sqlite_db.db')
     app.config['BASIC_AUTH_SQLITE_DATABSE_URI'] = BASIC_AUTH_SQLITE_DATABSE_URI
 
-
+    # debug mode on while testing the app or when in development mode
     if testing:
         app.debug = True
 
 
+    # flask app routes
+    
     @app.route("/")
+    # root route
     def index():
         """Landing page of the app"""
         return render_template("index.html")
 
 
     @app.route("/about")
+    # about page
     def about():
         """about page of the app"""
         return render_template("about.html")
 
     
     @app.route('/sitemap')
+    # sitemap
     def routes():
         """displays all the routes for the app"""
         routes = {}
@@ -62,7 +70,9 @@ def create_app(testing = False):
     sqlite_db.init_app(app)
     sqlite_db.init_db()
     
+
     return app
+
 
 if __name__  == "__main__":
     FLASK_APP = create_app(testing = True)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template
-from flask import current_app
+from flask import Flask, render_template, request
 import os
+
 
 def create_app(testing = False):
 
@@ -13,21 +13,40 @@ def create_app(testing = False):
 
     app.config["SECRET_KEY"] = "Your-secret-key-here"
 
+
     CWD = os.getcwd()
 
     BASIC_AUTH_SQLITE_DATABSE_URI = os.path.join(CWD, 'blueprints/auth/basic_auth/sqlite_db.db')
     app.config['BASIC_AUTH_SQLITE_DATABSE_URI'] = BASIC_AUTH_SQLITE_DATABSE_URI
 
+
     if testing:
         app.debug = True
 
+
     @app.route("/")
     def index():
+        """Landing page of the app"""
         return render_template("index.html")
+
 
     @app.route("/about")
     def about():
+        """about page of the app"""
         return render_template("about.html")
+
+    
+    @app.route('/sitemap')
+    def routes():
+        """displays all the routes for the app"""
+        routes = {}
+        for rule in app.url_map.iter_rules():
+            if rule.endpoint != "static":
+                routes[rule.rule] = app.view_functions[rule.endpoint].__doc__
+        endpoints = list(routes.keys())
+        endpoints.sort()
+        return render_template('routes.html', routes = routes, endpoints = endpoints)
+
 
     # registering blueprints
 

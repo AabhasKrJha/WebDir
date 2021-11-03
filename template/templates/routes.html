@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <br><br>
+        <h2>Routes</h2> <hr> <br>
+
+        <ul>
+        {% for endpoint in endpoints %}
+            <li>
+            {{ endpoint }} - {{ routes[endpoint] }}
+            </li>
+        {% endfor %}
+        </ul>
+        
+    </div>
+
+{% endblock %}

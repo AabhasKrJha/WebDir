@@ -14,7 +14,7 @@ def create_app(testing = False):
     app_ctx = app.app_context()
     app_ctx.push()
 
-    app.config["SECRET_KEY"] = "this is a secret key"
+    app.config["SECRET_KEY"] = "test"
 
 
     CWD = os.getcwd()
